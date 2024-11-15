@@ -1,0 +1,16 @@
+/* src/components/ProfileInfo.css */
+.profile-info-container {
+    margin-top: 100px;
+    text-align: center;
+}
+
+.profile-info-container img {
+    border-radius: 50%;
+    width: 150px;
+    height: 150px;
+}
+
+.profile-info-container p {
+    font-size: 18px;
+    font-weight: bold;
+}
