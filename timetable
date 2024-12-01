@@ -1,0 +1,85 @@
+import React from 'react';
+import { Table, TableBody, TableCell, TableContainer, TableHead, TableRow, Paper, Typography, Box, Grid, Button } from '@mui/material';
+
+const timetableData = [
+    { day: 'Monday', periods: ['Math', 'English', 'Science', 'History', 'PE'] },
+    { day: 'Tuesday', periods: ['Physics', 'Math', 'Biology', 'Art', 'English'] },
+    { day: 'Wednesday', periods: ['Chemistry', 'Math', 'Computer Science', 'History', 'PE'] },
+    { day: 'Thursday', periods: ['Biology', 'English', 'Science', 'Art', 'History'] },
+    { day: 'Friday', periods: ['Math', 'English', 'PE', 'Computer Science', 'History'] },
+];
+
+const TimeTable = () => {
+    const handleTimetableGenerator = () => {
+        alert('Timetable Generator Button Clicked');
+    };
+
+    const handleTimetableUpload = () => {
+        alert('Timetable Upload Button Clicked');
+    };
+
+    return (
+        <Box sx={{ padding: 4 }}>
+            <Typography variant="h4" component="h1" gutterBottom align="center">
+                Weekly Timetable
+            </Typography>
+
+            {/* Two-Section Button Layout */}
+            <Grid container spacing={2} justifyContent="center" sx={{ marginBottom: 4 }}>
+                <Grid item>
+                    <Button 
+                        variant="contained" 
+                        color="primary" 
+                        onClick={handleTimetableGenerator}
+                        sx={{ padding: '10px 20px' }}
+                    >
+                        Timetable Generator
+                    </Button>
+                </Grid>
+                <Grid item>
+                    <Button 
+                        variant="contained" 
+                        color="secondary" 
+                        onClick={handleTimetableUpload}
+                        sx={{ padding: '10px 20px' }}
+                    >
+                        Timetable Upload
+                    </Button>
+                </Grid>
+            </Grid>
+
+            {/* Timetable */}
+            <TableContainer component={Paper} elevation={3} sx={{ maxWidth: 800, margin: '0 auto' }}>
+                <Table>
+                    <TableHead>
+                        <TableRow>
+                            <TableCell sx={{ fontWeight: 'bold', backgroundColor: '#282c34', color: '#fff' }}>Day</TableCell>
+                            {[1, 2, 3, 4, 5].map((period) => (
+                                <TableCell
+                                    key={period}
+                                    sx={{ fontWeight: 'bold', backgroundColor: '#61dafb', color: '#000', textAlign: 'center' }}
+                                >
+                                    Period {period}
+                                </TableCell>
+                            ))}
+                        </TableRow>
+                    </TableHead>
+                    <TableBody>
+                        {timetableData.map((row) => (
+                            <TableRow key={row.day}>
+                                <TableCell sx={{ fontWeight: 'bold', backgroundColor: '#f5f5f5' }}>{row.day}</TableCell>
+                                {row.periods.map((period, index) => (
+                                    <TableCell key={index} align="center">
+                                        {period}
+                                    </TableCell>
+                                ))}
+                            </TableRow>
+                        ))}
+                    </TableBody>
+                </Table>
+            </TableContainer>
+        </Box>
+    );
+};
+
+export default TimeTable;
